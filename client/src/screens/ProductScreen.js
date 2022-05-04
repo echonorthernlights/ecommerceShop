@@ -26,7 +26,7 @@ const ProductScreen = () => {
 
   useEffect(() => {
     dispatch(listProductDetails(id));
-  }, [dispatch]);
+  }, [dispatch, listProductDetails]);
 
   const addToCartHandler = () => {
     navigate(`/cart/${id}?quantity=${quantity}`);
@@ -84,27 +84,30 @@ const ProductScreen = () => {
                     </Col>
                   </Row>
                 </ListGroup.Item>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Qauntity</Col>
+                {product.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Qauntity</Col>
 
-                    <Col>
-                      <Form.Control
-                        as="select"
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
-                      >
-                        {[...Array(product.countInStock).keys()].map(
-                          (index) => (
-                            <option value={index + 1} key={index + 1}>
-                              {index + 1}
-                            </option>
-                          )
-                        )}
-                      </Form.Control>
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
+                      <Col>
+                        <Form.Control
+                          as="select"
+                          value={quantity}
+                          onChange={(e) => setQuantity(e.target.value)}
+                        >
+                          {[...Array(product.countInStock).keys()].map(
+                            (index) => (
+                              <option value={index + 1} key={index + 1}>
+                                {index + 1}
+                              </option>
+                            )
+                          )}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                )}
+
                 <ListGroup.Item>
                   <Row className="p-2">
                     <Button
