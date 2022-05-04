@@ -26,6 +26,10 @@ const ProductScreen = () => {
 
   useEffect(() => {
     dispatch(listProductDetails(id));
+    //clen up function--------------------
+    // return (state) => {
+    //   state.productDetails.product = [];
+    // };
   }, [dispatch, listProductDetails]);
 
   const addToCartHandler = () => {
