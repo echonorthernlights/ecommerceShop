@@ -71,6 +71,30 @@ const products = [
     rating: 4,
     numReviews: 12,
   },
+  {
+    name: "Product 1",
+    image: "/images/alexa.jpg",
+    description:
+      "Product 1Product 1Product 1Product 1Product 1Product 1Product 1Product 1Product 1Product 1Product 1Product 1Product 1Product 1Product 1",
+    brand: "Amazon",
+    category: "Electronics",
+    price: 29.99,
+    countInStock: 0,
+    rating: 4,
+    numReviews: 12,
+  },
+  {
+    name: "Product 2",
+    image: "/images/alexa.jpg",
+    description:
+      "Product 2 Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2Product 2",
+    brand: "Amazon",
+    category: "Electronics",
+    price: 29.99,
+    countInStock: 0,
+    rating: 4,
+    numReviews: 12,
+  },
 ];
 
 export default products;

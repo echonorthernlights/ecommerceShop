@@ -15,7 +15,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../actions/productActions";
-
+import NumericInput from 'react-numeric-input'
 const ProductScreen = () => {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
@@ -94,7 +94,7 @@ const ProductScreen = () => {
                       <Col>Qauntity</Col>
 
                       <Col>
-                        <Form.Control
+                        {/* <Form.Control
                           as="select"
                           value={quantity}
                           onChange={(e) => setQuantity(e.target.value)}
@@ -106,7 +106,16 @@ const ProductScreen = () => {
                               </option>
                             )
                           )}
-                        </Form.Control>
+                        </Form.Control> */}
+                       <NumericInput 
+	                        className="form-control" 
+                          value={ quantity } 
+                          min={ 1 } 
+                          max={ product.countInStock } 
+                          step={ 1 } 
+                          precision={ 0 } 
+                          onChange={(quantity) => setQuantity(quantity)}
+                        />
                       </Col>
                     </Row>
                   </ListGroup.Item>
