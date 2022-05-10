@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
+import NumericInput from "react-numeric-input";
 import {
   Link,
   useNavigate,
@@ -71,7 +72,7 @@ const CartScreen = () => {
                     </Col>
                     <Col md={2}>${item.price}</Col>
                     <Col md={2}>
-                      <Form.Control
+                      {/* <Form.Control
                         as="select"
                         value={item.quantity}
                         onChange={(e) =>
@@ -85,7 +86,16 @@ const CartScreen = () => {
                             {index + 1}
                           </option>
                         ))}
-                      </Form.Control>
+                      </Form.Control> */}
+                      <NumericInput 
+	                        className="form-control" 
+                          value={ item.quantity } 
+                          min={ 1 } 
+                          max={ item.countInStock } 
+                          step={ 1 } 
+                          precision={ 0 } 
+                          onChange={(quantity) => dispatch(addToCart(item.product, quantity))}
+                        />
                     </Col>
                     <Col md={2}>
                       <Button
@@ -100,6 +110,7 @@ const CartScreen = () => {
                     </Col>
                   </Row>
                 </ListGroup.Item>
+                
               );
             })}
           </ListGroup>

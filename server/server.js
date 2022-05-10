@@ -5,17 +5,21 @@ import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
 import productsRouter from "./routes/api/products.js";
+import userRouter from "./routes/api/users.js"
 import connectDB from "../db/connectDB.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
+
 dotenv.config();
 const app = express();
+app.use(express.json())
 const PORT = process.env.PORT || 5000;
 
 //const products = require("./data/products");
 //const productsRouter = require("./routes/api/products");
 
 app.use("/api/products", productsRouter);
+app.use("/api/users", userRouter)
 
 //error handeling middleware
 app.use(notFound);
