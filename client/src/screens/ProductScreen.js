@@ -16,6 +16,7 @@ import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../actions/productActions";
 import NumericInput from 'react-numeric-input'
+import { addToCart } from "../actions/cartActions";
 const ProductScreen = () => {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
@@ -33,7 +34,9 @@ const ProductScreen = () => {
   }, [dispatch, listProductDetails]);
 
   const addToCartHandler = () => {
-    navigate(`/cart/${id}?quantity=${quantity}`);
+    dispatch(addToCart(id, quantity))
+    //navigate(`/cart/${id}?quantity=${quantity}`);
+    navigate('/cart')
   };
 
   return (

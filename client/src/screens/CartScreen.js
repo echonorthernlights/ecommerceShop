@@ -34,6 +34,7 @@ const CartScreen = () => {
   console.log(cartItems);
   useEffect(() => {
     if (id) {
+      //searchParams.delete("quantity")
       dispatch(addToCart(id, quantity));
     }
   }, [dispatch, id, quantity]);

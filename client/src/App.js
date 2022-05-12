@@ -8,6 +8,7 @@ import CartScreen from "./screens/CartScreen";
 import Login from "./components/Login";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <main className="py-3">
         <Container>
           <Routes>
+          <Route path='/profile' element={<ProfileScreen/>}/>
           <Route path='/register' element={<RegisterScreen />} />
             <Route path='/login' element={<LoginScreen />} />
             <Route exact path="/" element={<HomeScreen />} />
