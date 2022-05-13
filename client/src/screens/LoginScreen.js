@@ -20,6 +20,8 @@ const LoginScreen = () => {
     useEffect(()=>{
         if(userInfo){
             navigate(redirect)
+            console.log("-----------")
+            console.log(redirect)
         }
     },[navigate, userInfo, redirect])
 
