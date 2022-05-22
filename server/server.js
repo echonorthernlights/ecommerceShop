@@ -23,6 +23,11 @@ app.use("/api/products", productsRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", ordersRouter);
 
+//fetch paypal client  id
+app.get("/api/config/paypal", (req, res) =>
+  res.send(process.env.PAYPAL_CLIENT_ID)
+);
+
 //error handeling middleware
 app.use(notFound);
 
