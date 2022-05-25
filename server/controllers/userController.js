@@ -102,9 +102,7 @@ const registerUser = asyncHandler(async (req, res) => {
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
   if (users) {
-    res.json({
-      users,
-    });
+    res.json(users);
   } else {
     res.status(401);
     throw new Error("Users not found !!");
