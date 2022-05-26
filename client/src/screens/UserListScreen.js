@@ -14,13 +14,22 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 
 const UserListScreen = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 
   useEffect(() => {
-    dispatch(listUsers());
-  }, [listUsers]);
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(listUsers());
+    } else {
+      navigate("/login");
+    }
+  }, [navigate, dispatch, listUsers, userInfo]);
   const deleteHandler = () => {
     console.log("delete");
   };
