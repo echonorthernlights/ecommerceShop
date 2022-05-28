@@ -7,7 +7,10 @@ import { PayPalButton } from "react-paypal-button-v2";
 import { Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { getOrderDetails, payOrder } from "../actions/orderActions";
 import Loader from "../components/Loader";
-import { ORDER_PAY_RESET } from "../constants/orderConstants";
+import {
+  ORDER_LIST_MY_RESET,
+  ORDER_PAY_RESET,
+} from "../constants/orderConstants";
 const OrderScreen = () => {
   const [sdkReady, setSdkReady] = useState(false);
 
@@ -48,6 +51,7 @@ const OrderScreen = () => {
     };
     if (!order || successPay) {
       dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_LIST_MY_RESET });
       dispatch(getOrderDetails(id));
     } else if (!order.isPayed) {
       if (!window.paypal) {
@@ -57,7 +61,7 @@ const OrderScreen = () => {
       }
     }
     //addPayPalScript();
-  }, [dispatch, id, order, successPay]);
+  }, [dispatch, id, order, successPay, getOrderDetails]);
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(id, paymentResult));

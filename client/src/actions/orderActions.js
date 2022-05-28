@@ -11,8 +11,10 @@ import {
   ORDER_LIST_MY_REQUEST,
   ORDER_LIST_MY_SUCCESS,
   ORDER_LIST_MY_FAIL,
+  ORDER_LIST_MY_RESET,
 } from "../constants/orderConstants";
 import axios from "axios";
+import { CART_ITEMS_RESET } from "../constants/cartConstants";
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -83,6 +85,8 @@ export const payOrder =
         config
       );
       dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
+      //empty cart after payment success
+      dispatch({ type: CART_ITEMS_RESET });
     } catch (error) {
       dispatch({
         type: ORDER_PAY_FAIL,
@@ -96,6 +100,7 @@ export const payOrder =
 
 export const listMyOrders = () => async (dispatch, getState) => {
   try {
+    //dispatch({ type: ORDER_LIST_MY_RESET });
     dispatch({ type: ORDER_LIST_MY_REQUEST });
     const {
       userLogin: { userInfo },

@@ -13,6 +13,7 @@ import { listMyOrders } from "../actions/orderActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { LinkContainer } from "react-router-bootstrap";
+import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 const ProfileScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -52,7 +53,7 @@ const ProfileScreen = () => {
         setEmail(user.email);
       }
     }
-  }, [navigate, user, dispatch, userInfo]);
+  }, [navigate, user, dispatch, userInfo, listMyOrders]);
 
   const submitHandler = (e) => {
     e.preventDefault();

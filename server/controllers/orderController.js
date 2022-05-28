@@ -54,10 +54,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @route   PUT /api/orders/:id/pay
 // @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
-  console.log("test------------------------------");
   const order = await Order.findById(req.params.id);
-  console.log(order);
-
   if (order) {
     order.isPayed = true;
     order.payedAt = Date.now();

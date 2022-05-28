@@ -131,7 +131,6 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.put(`/api/users/profile`, user, config);
-    console.log("profile data", data);
     dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -154,8 +153,6 @@ export const listUsers = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-
-    console.log("abt to hit");
     const { data } = await axios.get(`/api/users/`, config);
 
     dispatch({
