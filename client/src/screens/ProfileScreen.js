@@ -30,7 +30,12 @@ const ProfileScreen = () => {
   const dispatch = useDispatch();
 
   const orderListMy = useSelector((state) => state.orderListMy);
-  const { error: errorOrders, loading: loadingOrders, orders } = orderListMy;
+  const {
+    error: errorOrders,
+    loading: loadingOrders,
+    orders,
+    success: successOrderListMy,
+  } = orderListMy;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -53,7 +58,7 @@ const ProfileScreen = () => {
         setEmail(user.email);
       }
     }
-  }, [navigate, user, dispatch, userInfo, listMyOrders]);
+  }, [navigate, user, dispatch, userInfo, listMyOrders, successOrderListMy]);
 
   const submitHandler = (e) => {
     e.preventDefault();

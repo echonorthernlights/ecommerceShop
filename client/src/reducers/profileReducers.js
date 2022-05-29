@@ -8,7 +8,7 @@ import {
   USER_UPDATE_PROFILE_SUCCESS,
 } from "../constants/userConstants";
 
-export const profileReducers = (state = { user: {} }, action) => {
+export const profileReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case USER_DETAILS_REQUEST:
       return { ...state, loading: true };
@@ -23,7 +23,7 @@ export const profileReducers = (state = { user: {} }, action) => {
   }
 };
 
-export const userUpdateProfileReducers = (state = {}, action) => {
+export const userUpdateProfileReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_UPDATE_PROFILE_REQUEST:
       return { ...state, loading: true };
